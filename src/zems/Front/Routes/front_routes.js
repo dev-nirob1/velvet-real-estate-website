@@ -24,6 +24,11 @@ export const frontRoutes = [
                 component: () => import('../Pages/AmenitiesPage.vue')
             },
             {
+                path: 'penthouse',
+                name: 'Penthouse',
+                component: () => import('../Pages/PenthousePage.vue')
+            },
+            {
                 path: 'inquire',
                 name: 'Inquire',
                 component: () => import('../Pages/InquirePage.vue')

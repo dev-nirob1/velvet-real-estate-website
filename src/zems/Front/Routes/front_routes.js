@@ -7,6 +7,11 @@ export const frontRoutes = [
                 path: '',
                 name: 'Home',
                 component: () => import('../Pages/HomePage.vue')
+            },
+            {
+                path: 'residences',
+                name: 'Residences',
+                component: () => import('../Pages/ResidencesPage.vue')
             }
         ]
     }

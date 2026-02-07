@@ -5,6 +5,7 @@
     <VisionSection />
     <AmenitiesSection />
     <GallerySection />
+    <LocationSection />
   </div>
 </template>
 
@@ -14,6 +15,7 @@ import StatsBar from "../Components/Section/StatsBar.vue";
 import VisionSection from "../Components/Section/VisionSection.vue";
 import AmenitiesSection from "../Components/Section/AmenitiesSection.vue";
 import GallerySection from "../Components/Section/GallerySection.vue";
+import LocationSection from "../Components/Section/LocationSection.vue";
 </script>
 
 <style scoped>

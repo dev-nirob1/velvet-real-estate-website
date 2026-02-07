@@ -5,6 +5,7 @@
       :src="backgroundImage"
       class="page-hero-img"
       alt="Hero Background"
+      loading="eager"
     />
     <div class="overlay-gradient"></div>
     <div class="hero-content">
@@ -41,7 +42,7 @@ defineProps({
   text-align: center;
   overflow: hidden;
   padding-top: 100px; /* Offset for fixed navbar */
-  background-color: #0a0a0a; /* Dark base color */
+  background-color: #050505;
 }
 
 .page-hero-img {
@@ -53,6 +54,16 @@ defineProps({
   object-fit: cover;
   display: block;
   z-index: 1;
+  animation: zoomSlow 20s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes zoomSlow {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
 }
 
 .overlay-gradient {
@@ -60,7 +71,7 @@ defineProps({
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.4) 0%,
     rgba(0, 0, 0, 0.7) 100%
   );
   z-index: 2;
@@ -104,7 +115,7 @@ defineProps({
 .fade-in-up {
   opacity: 0;
   transform: translateY(20px);
-  animation: fadeInUp 1s forwards 1.2s;
+  animation: fadeInUp 1.2s forwards 1.2s;
 }
 
 @keyframes fadeIn {
@@ -126,7 +137,7 @@ defineProps({
     padding-top: 80px;
   }
   .gold-text {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
   }
 }
 </style>

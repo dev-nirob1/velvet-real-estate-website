@@ -3,7 +3,7 @@
     <PageHero
       subtitle="THE COLLECTION"
       title="Manhattan's <br /> Crown Jewels"
-      :backgroundImage="'https://images.unsplash.com/photo-1626808642820-b41f521a339a?q=80&w=2000&auto=format&fit=crop'"
+      :backgroundImage="'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2000&auto=format&fit=crop'"
     />
     <ResGridSection />
   </div>

@@ -1,9 +1,11 @@
 <template>
   <div class="res-card">
     <div class="res-img">
-      <img :src="unit.image" :alt="unit.name" />
+      <img :src="imgSrc" :alt="unit.name" @error="handleImgError" />
       <div class="res-overlay">
-        <button class="view-details-btn">View Details</button>
+        <router-link :to="'/residences/' + unit.id" class="view-details-btn">
+          View Details
+        </router-link>
       </div>
     </div>
     <div class="res-info">
@@ -18,12 +20,22 @@
 </template>
 
 <script setup>
-defineProps({
+import { ref } from "vue";
+
+const props = defineProps({
   unit: {
     type: Object,
     required: true,
   },
 });
+
+const fallbackImg =
+  "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=800&auto=format&fit=crop";
+const imgSrc = ref(props.unit.image);
+
+const handleImgError = () => {
+  imgSrc.value = fallbackImg;
+};
 </script>
 
 <style scoped>

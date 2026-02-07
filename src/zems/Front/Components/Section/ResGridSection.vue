@@ -19,13 +19,21 @@
     <!-- Residences Grid -->
     <div class="residences-content">
       <div class="container">
-        <TransitionGroup tag="div" name="grid-fade" class="res-grid">
+        <TransitionGroup
+          v-if="filteredUnits && filteredUnits.length > 0"
+          tag="div"
+          name="grid-fade"
+          class="res-grid"
+        >
           <ResidenceCard
             v-for="unit in filteredUnits"
             :key="unit.id"
             :unit="unit"
           />
         </TransitionGroup>
+        <div v-else class="no-results text-center">
+          <p>No residences found for this category.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -34,6 +42,7 @@
 <script setup>
 import { ref, computed } from "vue";
 import ResidenceCard from "../Widget/ResidenceCard.vue";
+import { units } from "../../Data/residences_data.js";
 
 const activeFilter = ref("all");
 
@@ -42,69 +51,6 @@ const categories = [
   { id: "1br", label: "1 Bedroom" },
   { id: "2br", label: "2 Bedroom" },
   { id: "penthouse", label: "Penthouses" },
-];
-
-const units = [
-  {
-    id: 1,
-    name: "Residence 10A",
-    type: "1 Bedroom / 1.5 Bath",
-    category: "1br",
-    sqft: "1,200",
-    price: "$2,500,000",
-    image:
-      "https://images.unsplash.com/photo-1502005229766-939760a7cb0d?q=80&w=800&auto=format&fit=crop",
-  },
-  {
-    id: 2,
-    name: "Residence 15B",
-    type: "2 Bedroom / 2.5 Bath",
-    category: "2br",
-    sqft: "1,850",
-    price: "$4,200,000",
-    image:
-      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=800&auto=format&fit=crop",
-  },
-  {
-    id: 3,
-    name: "Penthouse Alpha",
-    type: "Duplex Sky Mansion",
-    category: "penthouse",
-    sqft: "5,500",
-    price: "Price Upon Request",
-    image:
-      "https://images.unsplash.com/photo-1631679706909-1844bbd07221?q=80&w=800&auto=format&fit=crop",
-  },
-  {
-    id: 4,
-    name: "Residence 12C",
-    type: "1 Bedroom / 1 Bath",
-    category: "1br",
-    sqft: "980",
-    price: "$1,950,000",
-    image:
-      "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?q=80&w=800&auto=format&fit=crop",
-  },
-  {
-    id: 5,
-    name: "Residence 22A",
-    type: "2 Bedroom / 2 Bath",
-    category: "2br",
-    sqft: "1,600",
-    price: "$3,800,000",
-    image:
-      "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?q=80&w=800&auto=format&fit=crop",
-  },
-  {
-    id: 6,
-    name: "Penthouse Royal",
-    type: "Full Floor Estate",
-    category: "penthouse",
-    sqft: "8,200",
-    price: "$55,000,000",
-    image:
-      "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=800&auto=format&fit=crop",
-  },
 ];
 
 const filteredUnits = computed(() => {
@@ -199,5 +145,10 @@ const filteredUnits = computed(() => {
     padding: 10px 20px;
     font-size: 0.7rem;
   }
+}
+.no-results {
+  padding: 100px 0;
+  color: #666;
+  font-size: 1.2rem;
 }
 </style>
